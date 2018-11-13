@@ -1,0 +1,21 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+
+service Authorization{
+    rpc Authorize (AuthorizationRequest) returns (AuthorizationResponse){
+        option (google.api.http) = {
+            post: "/authorize",
+            body: "*",
+        };
+    }
+}
+
+message AuthorizationRequest {
+	string ResourceID = 1;
+	string Scope = 2;
+	string AuthToken = 3;
+}
+
+message AuthorizationResponse{
+	bool Authorized = 1;
+}

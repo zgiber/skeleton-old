@@ -1,0 +1,68 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+
+service Users {
+
+    rpc Register (RegisterUserRequest) returns (RegisterUserResponse){
+        option (google.api.http) = {
+            post: "/users/register",
+            body: "*",
+        };
+    }
+
+    rpc ValidateID (ValidateIDRequest) returns (ValidateIDResponse){
+        option (google.api.http) = {
+            post: "/users/id/validate",
+            body: "*",
+        };
+    }
+
+    rpc Login (LoginRequest) returns (LoginResponse){
+        option (google.api.http) = {
+            post: "/login",
+            body: "*",
+        };
+    }
+
+    rpc Authenticate (AuthenticationRequest) returns (AuthenticationResponse){
+        option (google.api.http) = {
+            post: "/authenticate",
+            body: "*",
+        };
+    }
+}
+
+message RegisterUserRequest {
+	string UserID = 1;
+    string Password = 2;
+}
+
+message RegisterUserResponse {
+}
+
+message LoginRequest {
+    string UserID = 1;
+    string Password = 2;
+}
+
+message LoginResponse {
+    string AuthToken = 1;
+    string RefreshToken = 2;
+}
+
+message ValidateIDRequest {
+    string UserID = 1;
+}
+
+message ValidateIDResponse{
+    bool Valid = 1;
+}
+
+message AuthenticationRequest{
+	 string AuthToken = 1;
+}
+
+message AuthenticationResponse {
+	string Username = 1;
+	string Email = 2;
+}

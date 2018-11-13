@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "users.proto",
+    "title": "clients.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -37,7 +37,59 @@
           }
         ],
         "tags": [
-          "Users"
+          "Clients"
+        ]
+      }
+    },
+    "/clients/id/validate": {
+      "post": {
+        "operationId": "ValidateID",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ValidateIDResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValidateIDRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Clients"
+        ]
+      }
+    },
+    "/clients/register": {
+      "post": {
+        "operationId": "Register",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/RegisterClientResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterClientRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Clients"
         ]
       }
     },
@@ -63,59 +115,7 @@
           }
         ],
         "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/id/validate": {
-      "post": {
-        "operationId": "ValidateID",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ValidateIDResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ValidateIDRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/register": {
-      "post": {
-        "operationId": "Register",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/RegisterUserResponse"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/RegisterUserRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Users"
+          "Clients"
         ]
       }
     }
@@ -132,7 +132,7 @@
     "AuthenticationResponse": {
       "type": "object",
       "properties": {
-        "Username": {
+        "Clientname": {
           "type": "string"
         },
         "Email": {
@@ -143,7 +143,7 @@
     "LoginRequest": {
       "type": "object",
       "properties": {
-        "UserID": {
+        "ClientID": {
           "type": "string"
         },
         "Password": {
@@ -162,10 +162,10 @@
         }
       }
     },
-    "RegisterUserRequest": {
+    "RegisterClientRequest": {
       "type": "object",
       "properties": {
-        "UserID": {
+        "ClientID": {
           "type": "string"
         },
         "Password": {
@@ -173,13 +173,13 @@
         }
       }
     },
-    "RegisterUserResponse": {
+    "RegisterClientResponse": {
       "type": "object"
     },
     "ValidateIDRequest": {
       "type": "object",
       "properties": {
-        "UserID": {
+        "ClientID": {
           "type": "string"
         }
       }

@@ -6,27 +6,27 @@ import (
 	"github.com/zgiber/skeleton/contract"
 )
 
-// Users service
-type Users struct {
+// Clients service
+type Clients struct {
 }
 
 // Register ...
-func (usr *Users) Register(context.Context, *contract.RegisterUserRequest) (*contract.RegisterUserResponse, error) {
+func (usr *Clients) Register(context.Context, *contract.RegisterClientRequest) (*contract.RegisterClientResponse, error) {
 	panic("not implemented")
 }
 
 // ValidateID ...
-func (usr *Users) ValidateID(context.Context, *contract.ValidateIDRequest) (*contract.ValidateIDResponse, error) {
+func (usr *Clients) ValidateID(context.Context, *contract.ValidateIDRequest) (*contract.ValidateIDResponse, error) {
 	panic("not implemented")
 }
 
 // Login ...
-func (usr *Users) Login(context.Context, *contract.LoginRequest) (*contract.LoginResponse, error) {
+func (usr *Clients) Login(context.Context, *contract.LoginRequest) (*contract.LoginResponse, error) {
 	panic("not implemented")
 }
 
 // Authenticate ...
-func (usr *Users) Authenticate(context.Context, *contract.AuthenticationRequest) (*contract.AuthenticationResponse, error) {
+func (usr *Clients) Authenticate(context.Context, *contract.AuthenticationRequest) (*contract.AuthenticationResponse, error) {
 	panic("not implemented")
 }
 

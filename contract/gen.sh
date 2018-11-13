@@ -14,5 +14,5 @@ protoc -I. -I ../../../../../src/github.com/grpc-ecosystem/grpc-gateway/third_pa
 protoc -I. -I ../../../../../src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --grpc-gateway_out=logtostderr=true,request_context=true,import_path=contract:. ./*.proto
 
 # swagger documentation
-protoc -I. -I ../../../../../src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --swagger_out=logtostderr=true:./../ ./users.proto
+protoc -I. -I ../../../../../src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --swagger_out=logtostderr=true:./../ ./clients.proto
 protoc -I. -I ../../../../../src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis --swagger_out=logtostderr=true:./../ ./authz.proto

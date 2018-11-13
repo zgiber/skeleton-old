@@ -1,18 +1,18 @@
 syntax = "proto3";
 import "google/api/annotations.proto";
 
-service Users {
+service Clients {
 
-    rpc Register (RegisterUserRequest) returns (RegisterUserResponse){
+    rpc Register (RegisterClientRequest) returns (RegisterClientResponse){
         option (google.api.http) = {
-            post: "/users/register",
+            post: "/clients/register",
             body: "*",
         };
     }
 
     rpc ValidateID (ValidateIDRequest) returns (ValidateIDResponse){
         option (google.api.http) = {
-            post: "/users/id/validate",
+            post: "/clients/id/validate",
             body: "*",
         };
     }
@@ -32,16 +32,16 @@ service Users {
     }
 }
 
-message RegisterUserRequest {
-	string UserID = 1;
+message RegisterClientRequest {
+	string ClientID = 1;
     string Password = 2;
 }
 
-message RegisterUserResponse {
+message RegisterClientResponse {
 }
 
 message LoginRequest {
-    string UserID = 1;
+    string ClientID = 1;
     string Password = 2;
 }
 
@@ -51,7 +51,7 @@ message LoginResponse {
 }
 
 message ValidateIDRequest {
-    string UserID = 1;
+    string ClientID = 1;
 }
 
 message ValidateIDResponse{
@@ -63,6 +63,6 @@ message AuthenticationRequest{
 }
 
 message AuthenticationResponse {
-	string Username = 1;
+	string Clientname = 1;
 	string Email = 2;
 }

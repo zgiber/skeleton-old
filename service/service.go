@@ -11,22 +11,22 @@ type Clients struct {
 }
 
 // Register ...
-func (usr *Clients) Register(context.Context, *contract.RegisterClientRequest) (*contract.RegisterClientResponse, error) {
+func (cli *Clients) Register(ctx context.Context, req *contract.RegisterClientRequest) (*contract.RegisterClientResponse, error) {
 	panic("not implemented")
 }
 
 // ValidateID ...
-func (usr *Clients) ValidateID(context.Context, *contract.ValidateIDRequest) (*contract.ValidateIDResponse, error) {
+func (cli *Clients) ValidateID(ctx context.Context, req *contract.ValidateIDRequest) (*contract.ValidateIDResponse, error) {
 	panic("not implemented")
 }
 
 // Login ...
-func (usr *Clients) Login(context.Context, *contract.LoginRequest) (*contract.LoginResponse, error) {
+func (cli *Clients) Login(ctx context.Context, req *contract.LoginRequest) (*contract.LoginResponse, error) {
 	panic("not implemented")
 }
 
 // Authenticate ...
-func (usr *Clients) Authenticate(context.Context, *contract.AuthenticationRequest) (*contract.AuthenticationResponse, error) {
+func (cli *Clients) Authenticate(ctx context.Context, req *contract.AuthenticationRequest) (*contract.AuthenticationResponse, error) {
 	panic("not implemented")
 }
 
@@ -35,6 +35,6 @@ type Auth struct {
 }
 
 // Authorize ...
-func (auth *Auth) Authorize(context.Context, *contract.AuthorizationRequest) (*contract.AuthorizationResponse, error) {
+func (auth *Auth) Authorize(ctx context.Context, req *contract.AuthorizationRequest) (*contract.AuthorizationResponse, error) {
 	panic("not implemented")
 }

@@ -63,6 +63,5 @@ message AuthenticationRequest{
 }
 
 message AuthenticationResponse {
-	string Clientname = 1;
-	string Email = 2;
+	string ClientID = 1;
 }

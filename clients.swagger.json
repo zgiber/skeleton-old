@@ -132,10 +132,7 @@
     "AuthenticationResponse": {
       "type": "object",
       "properties": {
-        "Clientname": {
-          "type": "string"
-        },
-        "Email": {
+        "ClientID": {
           "type": "string"
         }
       }

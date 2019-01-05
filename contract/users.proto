@@ -1,0 +1,42 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+
+service Users {
+
+	// Registers a new client (user type), with password based authentication
+	rpc Register (RegisterUserRequest) returns (RegisterUserResponse){
+		option (google.api.http) = {
+			post: "/users/register",
+			body: "*",
+		};
+	}
+
+	// Login endpoint takes the credentials provided by the user
+	// and returns an opaque token which is then used by the user
+	// to interact with the API
+	rpc Login (LoginRequest) returns (LoginResponse){
+		option (google.api.http) = {
+			post: "/login",
+			body: "*",
+		};
+	}
+}
+
+message RegisterUserRequest {
+	string UserName = 1;
+	string Password = 2;
+}
+
+message RegisterUserResponse {
+	string UserID = 1;
+}
+
+message LoginRequest {
+	string UserID = 1;
+	string Password = 2;
+}
+
+message LoginResponse {
+	string AuthToken = 1;
+	string RefreshToken = 2;
+}

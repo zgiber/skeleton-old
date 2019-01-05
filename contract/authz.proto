@@ -2,20 +2,42 @@ syntax = "proto3";
 import "google/api/annotations.proto";
 
 service Authorization{
-    rpc Authorize (AuthorizationRequest) returns (AuthorizationResponse){
-        option (google.api.http) = {
-            post: "/authorize",
-            body: "*",
-        };
-    }
+	// Authorize takes ResourceID, Scope, ClientID and returns whether
+	// the request is authorised
+	rpc Authorize (AuthorizationRequest) returns (AuthorizationResponse){
+		option (google.api.http) = {
+			post: "/authorize",
+			body: "*",
+		};
+	}
 }
 
 message AuthorizationRequest {
 	string ResourceID = 1;
 	string Scope = 2;
-	string AuthToken = 3;
+	string ClientID = 3;
 }
 
 message AuthorizationResponse{
 	bool Authorized = 1;
+}
+
+service Authentication{
+
+	// Authenticate takes the opaque token from the client and
+	// returns data which allows to identify the client
+	rpc Authenticate (AuthenticationRequest) returns (AuthenticationResponse){
+		option (google.api.http) = {
+			post: "/authenticate",
+			body: "*",
+		};
+	}
+}
+
+message AuthenticationRequest{
+	string AuthToken = 1;
+}
+
+message AuthenticationResponse {
+	string ClientID = 1;
 }

@@ -1,67 +1,56 @@
 syntax = "proto3";
 import "google/api/annotations.proto";
 
+
 service Clients {
 
-    rpc Register (RegisterClientRequest) returns (RegisterClientResponse){
-        option (google.api.http) = {
-            post: "/clients/register",
-            body: "*",
-        };
-    }
+	rpc Create(CreateClientRequest) returns (CreateClientResponse){
+		option (google.api.http) = {
+			post: "/clients",
+			body: "*",
+		};
+	}
 
-    rpc ValidateID (ValidateIDRequest) returns (ValidateIDResponse){
-        option (google.api.http) = {
-            post: "/clients/id/validate",
-            body: "*",
-        };
-    }
+	rpc Retrieve(RetrieveClientRequest) returns (RetrieveClientResponse){
+		option (google.api.http) = {
+			get: "/clients/{ClientID}",
+		};
+	}
 
-    rpc Login (LoginRequest) returns (LoginResponse){
-        option (google.api.http) = {
-            post: "/login",
-            body: "*",
-        };
-    }
+	/*rpc Update(UpdateClientRequest) returns (UpdateClientResponse){*/
+		/*option (google.api.http) = {*/
+			/*put: "/clients/{ClientID}",*/
+			/*body: "*",*/
+		/*};*/
+	/*}*/
 
-    rpc Authenticate (AuthenticationRequest) returns (AuthenticationResponse){
-        option (google.api.http) = {
-            post: "/authenticate",
-            body: "*",
-        };
-    }
+	rpc Delete(DeleteClientRequest) returns (DeleteClientResponse){
+		option (google.api.http) = {
+			delete: "/clients/{ClientID}"
+		};
+	}
 }
 
-message RegisterClientRequest {
-	string ClientID = 1;
-    string Password = 2;
+message CreateClientRequest {
+	string ClientType = 1;
 }
 
-message RegisterClientResponse {
-}
-
-message LoginRequest {
-    string ClientID = 1;
-    string Password = 2;
-}
-
-message LoginResponse {
-    string AuthToken = 1;
-    string RefreshToken = 2;
-}
-
-message ValidateIDRequest {
-    string ClientID = 1;
-}
-
-message ValidateIDResponse{
-    bool Valid = 1;
-}
-
-message AuthenticationRequest{
-	 string AuthToken = 1;
-}
-
-message AuthenticationResponse {
+message CreateClientResponse {
 	string ClientID = 1;
 }
+
+message RetrieveClientRequest {
+	string ClientID = 1;
+}
+
+message RetrieveClientResponse {
+	string ClientID = 1;
+	string ClientType = 2;
+}
+
+message DeleteClientRequest {
+	string ClientID = 1;
+}
+
+message DeleteClientResponse {}
+

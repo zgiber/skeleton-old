@@ -1,0 +1,13 @@
+client
+ - type
+ - ID / pk
+
+authentications
+ - clientID / indexed
+ - token / unique / pk
+
+users
+ - username / indexed
+ - password / hashed / indexed
+ - clientID / pk
+

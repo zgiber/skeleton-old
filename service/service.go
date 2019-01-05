@@ -2,40 +2,57 @@ package service
 
 import (
 	"context"
-	"errors"
 
 	"github.com/zgiber/skeleton/contract"
 )
 
-// Clients service
-type Clients struct {
+// ClientService is a simple CRUD for Client resource types
+type ClientService struct {
 }
 
-// Register ...
-func (cli *Clients) Register(ctx context.Context, req *contract.RegisterClientRequest) (*contract.RegisterClientResponse, error) {
-	return nil, errors.New("not implemented")
+// Create a new client
+func (c *ClientService) Create(context.Context, *contract.CreateClientRequest) (*contract.CreateClientResponse, error) {
+	panic("not implemented")
 }
 
-// ValidateID ...
-func (cli *Clients) ValidateID(ctx context.Context, req *contract.ValidateIDRequest) (*contract.ValidateIDResponse, error) {
-	return nil, errors.New("not implemented")
+// Retrieve an existing client
+func (c *ClientService) Retrieve(context.Context, *contract.RetrieveClientRequest) (*contract.RetrieveClientResponse, error) {
+	panic("not implemented")
 }
 
-// Login ...
-func (cli *Clients) Login(ctx context.Context, req *contract.LoginRequest) (*contract.LoginResponse, error) {
-	return nil, errors.New("not implemented")
+// Delete an existing client
+func (c *ClientService) Delete(context.Context, *contract.DeleteClientRequest) (*contract.DeleteClientResponse, error) {
+	panic("not implemented")
 }
 
-// Authenticate ...
-func (cli *Clients) Authenticate(ctx context.Context, req *contract.AuthenticationRequest) (*contract.AuthenticationResponse, error) {
-	return nil, errors.New("not implemented")
+// AuthzService is an authorisation layer
+type AuthzService struct {
 }
 
-// Auth service
-type Auth struct {
+// Authorize the request based on the ResourceID, the Scope and the ClientId
+func (a *AuthzService) Authorize(context.Context, *contract.AuthorizationRequest) (*contract.AuthorizationResponse, error) {
+	panic("not implemented")
 }
 
-// Authorize ...
-func (auth *Auth) Authorize(ctx context.Context, req *contract.AuthorizationRequest) (*contract.AuthorizationResponse, error) {
-	return nil, errors.New("not implemented")
+// AuthService is an authentication service
+type AuthService struct {
+}
+
+// Authenticate the request based on the provided token
+func (a *AuthService) Authenticate(context.Context, *contract.AuthenticationRequest) (*contract.AuthenticationResponse, error) {
+	panic("not implemented")
+}
+
+// UserService provides methods for managing users (human clients)
+type UserService struct {
+}
+
+// Register a user
+func (u *UserService) Register(context.Context, *contract.RegisterUserRequest) (*contract.RegisterUserResponse, error) {
+	panic("not implemented")
+}
+
+// Login with user's credientials
+func (u *UserService) Login(context.Context, *contract.LoginRequest) (*contract.LoginResponse, error) {
+	panic("not implemented")
 }

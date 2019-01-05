@@ -15,8 +15,36 @@
     "application/json"
   ],
   "paths": {
+    "/authenticate": {
+      "post": {
+        "summary": "Authorize takes ResourceID, Scope, ClientID and returns whether\nthe request is authorised",
+        "operationId": "Authenticate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/AuthenticationResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AuthenticationRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Authentication"
+        ]
+      }
+    },
     "/authorize": {
       "post": {
+        "summary": "Authorize takes ResourceID, Scope, ClientID and returns whether\nthe request is authorised",
         "operationId": "Authorize",
         "responses": {
           "200": {
@@ -43,6 +71,22 @@
     }
   },
   "definitions": {
+    "AuthenticationRequest": {
+      "type": "object",
+      "properties": {
+        "AuthToken": {
+          "type": "string"
+        }
+      }
+    },
+    "AuthenticationResponse": {
+      "type": "object",
+      "properties": {
+        "ClientID": {
+          "type": "string"
+        }
+      }
+    },
     "AuthorizationRequest": {
       "type": "object",
       "properties": {
@@ -52,7 +96,7 @@
         "Scope": {
           "type": "string"
         },
-        "AuthToken": {
+        "ClientID": {
           "type": "string"
         }
       }

@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "clients.proto",
+    "title": "users.proto",
     "version": "version not set"
   },
   "schemes": [
@@ -15,14 +15,15 @@
     "application/json"
   ],
   "paths": {
-    "/clients": {
+    "/login": {
       "post": {
-        "operationId": "Create",
+        "summary": "Login endpoint takes the credentials provided by the user\nand returns an opaque token which is then used by the user\nto interact with the API",
+        "operationId": "Login",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/CreateClientResponse"
+              "$ref": "#/definitions/LoginResponse"
             }
           }
         },
@@ -32,89 +33,81 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CreateClientRequest"
+              "$ref": "#/definitions/LoginRequest"
             }
           }
         ],
         "tags": [
-          "Clients"
+          "Users"
         ]
       }
     },
-    "/clients/{ClientID}": {
-      "get": {
-        "operationId": "Retrieve",
+    "/users/register": {
+      "post": {
+        "summary": "Registers a new client (user type), with password based authentication",
+        "operationId": "Register",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/RetrieveClientResponse"
+              "$ref": "#/definitions/RegisterUserResponse"
             }
           }
         },
         "parameters": [
           {
-            "name": "ClientID",
-            "in": "path",
+            "name": "body",
+            "in": "body",
             "required": true,
-            "type": "string"
-          }
-        ],
-        "tags": [
-          "Clients"
-        ]
-      },
-      "delete": {
-        "operationId": "Delete",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DeleteClientResponse"
+              "$ref": "#/definitions/RegisterUserRequest"
             }
           }
-        },
-        "parameters": [
-          {
-            "name": "ClientID",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
         ],
         "tags": [
-          "Clients"
+          "Users"
         ]
       }
     }
   },
   "definitions": {
-    "CreateClientRequest": {
+    "LoginRequest": {
       "type": "object",
       "properties": {
-        "ClientType": {
-          "type": "string"
-        }
-      }
-    },
-    "CreateClientResponse": {
-      "type": "object",
-      "properties": {
-        "ClientID": {
-          "type": "string"
-        }
-      }
-    },
-    "DeleteClientResponse": {
-      "type": "object"
-    },
-    "RetrieveClientResponse": {
-      "type": "object",
-      "properties": {
-        "ClientID": {
+        "UserID": {
           "type": "string"
         },
-        "ClientType": {
+        "Password": {
+          "type": "string"
+        }
+      }
+    },
+    "LoginResponse": {
+      "type": "object",
+      "properties": {
+        "AuthToken": {
+          "type": "string"
+        },
+        "RefreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "RegisterUserRequest": {
+      "type": "object",
+      "properties": {
+        "UserName": {
+          "type": "string"
+        },
+        "Password": {
+          "type": "string"
+        }
+      }
+    },
+    "RegisterUserResponse": {
+      "type": "object",
+      "properties": {
+        "UserID": {
           "type": "string"
         }
       }
